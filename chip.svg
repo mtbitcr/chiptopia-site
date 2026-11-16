@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><style>#background{display:none}</style>
+  <!--
+    The app icon: a dark glass chip with violet inserts and a spark (the owner chose it on 2026-11-16).
+    `npm run icons` renders it. Android uses the groups "background" and "foreground" as the two
+    layers of the adaptive icon, so keep each shape in one of them.
+  -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="78%">
+      <stop offset="0" stop-color="#1b1630"/>
+      <stop offset="0.6" stop-color="#0c0c14"/>
+      <stop offset="1" stop-color="#07080b"/>
+    </radialGradient>
+    <radialGradient id="glow-violet" cx="16%" cy="90%" r="62%">
+      <stop offset="0" stop-color="#8b6cff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#8b6cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-teal" cx="90%" cy="8%" r="56%">
+      <stop offset="0" stop-color="#2bd4c5" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#2bd4c5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="disc" cx="40%" cy="34%" r="76%">
+      <stop offset="0" stop-color="#322c4d"/>
+      <stop offset="0.7" stop-color="#18161f"/>
+      <stop offset="1" stop-color="#0f0e15"/>
+    </radialGradient>
+    <linearGradient id="insert" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d4c8ff"/>
+      <stop offset="1" stop-color="#7a5cf0"/>
+    </linearGradient>
+    <radialGradient id="inlay" cx="45%" cy="38%" r="70%">
+      <stop offset="0" stop-color="#33295a"/>
+      <stop offset="1" stop-color="#15121f"/>
+    </radialGradient>
+    <radialGradient id="spark" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.4" stop-color="#e2d9ff"/>
+      <stop offset="1" stop-color="#9b80ff"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur-40" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <filter id="blur-18" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <clipPath id="disc-clip">
+      <circle cx="512" cy="512" r="330"/>
+    </clipPath>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+    <rect width="1024" height="1024" fill="url(#glow-violet)"/>
+    <rect width="1024" height="1024" fill="url(#glow-teal)"/>
+  </g>
+  <g id="foreground">
+    <ellipse cx="512" cy="580" rx="318" ry="300" fill="#000" opacity="0.65" filter="url(#blur-40)"/>
+    <circle cx="512" cy="512" r="330" fill="url(#disc)"/>
+    <g fill="url(#insert)">
+      <rect x="474" y="188" width="76" height="64" rx="16"/>
+      <rect x="474" y="188" width="76" height="64" rx="16" transform="rotate(45 512 512)"/>
+      <rect x="474" y="188" width="76" height="64" rx="16" transform="rotate(90 512 512)"/>
+      <rect x="474" y="188" width="76" height="64" rx="16" transform="rotate(135 512 512)"/>
+      <rect x="474" y="188" width="76" height="64" rx="16" transform="rotate(180 512 512)"/>
+      <rect x="474" y="188" width="76" height="64" rx="16" transform="rotate(225 512 512)"/>
+      <rect x="474" y="188" width="76" height="64" rx="16" transform="rotate(270 512 512)"/>
+      <rect x="474" y="188" width="76" height="64" rx="16" transform="rotate(315 512 512)"/>
+    </g>
+    <circle cx="512" cy="512" r="248" fill="none" stroke="#b9a6ff" stroke-opacity="0.4" stroke-width="5"/>
+    <circle cx="512" cy="512" r="212" fill="url(#inlay)" stroke="#ffffff" stroke-opacity="0.1" stroke-width="3"/>
+    <path d="M512 372 Q534 490 652 512 Q534 534 512 652 Q490 534 372 512 Q490 490 512 372Z" fill="#8b6cff" opacity="0.9" filter="url(#blur-18)"/>
+    <path d="M512 372 Q534 490 652 512 Q534 534 512 652 Q490 534 372 512 Q490 490 512 372Z" fill="url(#spark)"/>
+    <g clip-path="url(#disc-clip)">
+      <ellipse cx="420" cy="300" rx="300" ry="170" transform="rotate(-28 420 300)" fill="url(#sheen)"/>
+    </g>
+    <circle cx="512" cy="512" r="328.5" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="3"/>
+  </g>
+</svg>

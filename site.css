@@ -1,0 +1,300 @@
+/* The website of Chiptopia (scripts/make-site.ts). The colours and the legal page rules come from
+   src/styles/app.css, so that the website looks like the app; change them there and here. */
+@font-face {
+  font-family: "Sora";
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/sora-latin-600-normal.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/inter-latin-500-normal.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/inter-latin-600-normal.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/inter-latin-700-normal.woff2) format("woff2");
+}
+
+:root {
+  --bg: #07080b;
+  --text: #edeff3;
+  --muted: #9aa3b2;
+  --muted-strong: #b8bfcc;
+  --violet: #8b6cff;
+  --violet-soft: #b9a6ff;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* The glows reach past the right edge. "hidden" on the body left a horizontal scroll of 260 px on a
+   phone (Chrome, 2026-11-16); "clip" on both elements gives no scroll area at all. */
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--violet-soft);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--violet-soft);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.site-head,
+.screen,
+.site-foot {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.site-head {
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding-block: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-head nav {
+  display: flex;
+  gap: 4px 18px;
+}
+
+/* At least 44 px high, as the touch targets of the app. */
+.site-head nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-head nav a:hover,
+.site-head nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.glow {
+  position: absolute;
+  pointer-events: none;
+}
+
+.glow-violet {
+  right: -260px;
+  top: -260px;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle closest-side, rgb(109 75 255 / 0.36), rgb(109 75 255 / 0.19) 52%, rgb(109 75 255 / 0));
+}
+
+.glow-teal {
+  left: -300px;
+  top: 220px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle closest-side, rgb(31 191 178 / 0.2), rgb(31 191 178 / 0.1) 52%, rgb(31 191 178 / 0));
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* The privacy policy, the imprint and the support page: the rules of src/styles/app.css. */
+.screen {
+  padding-top: 12px;
+  padding-bottom: 48px;
+}
+
+.legal > :not(.glow) {
+  position: relative;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.legal h2 {
+  margin: 32px 0 8px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.legal p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted-strong);
+}
+
+.legal .legal-lead {
+  margin-top: 18px;
+}
+
+.legal-link {
+  display: block;
+  padding: 12px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.legal p + .legal-link,
+.legal-rows .legal-link {
+  margin-top: -12px;
+}
+
+.legal-rows .legal-link {
+  margin-bottom: -12px;
+}
+
+.legal-rows {
+  margin: 24px 0 0;
+  padding: 2px 20px;
+  border-radius: 24px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+}
+
+.legal-rows > div {
+  padding: 16px 0;
+}
+
+.legal-rows > div + div {
+  border-top: 1px solid var(--glass-border);
+}
+
+.legal-rows dt {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.legal-rows dd {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.legal-note {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* The home page */
+.home {
+  padding-top: 40px;
+  text-align: center;
+}
+
+.home-chip {
+  display: block;
+  width: 168px;
+  height: 168px;
+  margin: 0 auto 8px;
+  filter: drop-shadow(0 24px 48px rgb(0 0 0 / 0.6)) drop-shadow(0 0 60px rgb(109 75 255 / 0.35));
+}
+
+.home h1 {
+  margin: 0;
+  font-size: clamp(44px, 9vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.home .tagline {
+  margin: 12px auto 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--violet-soft);
+}
+
+.home p {
+  max-width: 520px;
+  margin: 18px auto 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted-strong);
+}
+
+.home .soon {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+.site-foot {
+  padding-block: 24px 40px;
+  border-top: 1px solid var(--glass-border);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.site-foot p {
+  margin: 0;
+}
